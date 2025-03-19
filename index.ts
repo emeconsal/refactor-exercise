@@ -58,6 +58,7 @@ export function statement(invoice: any, plays: any): string {
     minimumFractionDigits: 2,
   }).format;
 
+  const playsData: any[] = [];
   for (let perf of invoice.performances) {
     const play: any = plays[perf.playID];
     let thisAmount: number = 0;
@@ -72,6 +73,11 @@ export function statement(invoice: any, plays: any): string {
       default:
         throw new Error(`unknown type: ${play.type}`);
     }
+    playsData.push({
+      name: play.name,
+      amount: thisAmount,
+      audience: perf.audience,
+    });
     result += ` ${play.name}: ${format(thisAmount / 100)} (${
       perf.audience
     } seats)\n`;
