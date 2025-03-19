@@ -51,11 +51,7 @@ export function statement(invoice: any, plays: any): string {
         thisAmount = getTragedyAmount(perf);
         break;
       case "comedy":
-        thisAmount = 30000;
-        if (perf.audience > 20) {
-          thisAmount += 10000 + 500 * (perf.audience - 20);
-        }
-        thisAmount += 300 * perf.audience;
+        thisAmount = getComedyAmount(perf);
         break;
       default:
         throw new Error(`unknown type: ${play.type}`);
@@ -78,6 +74,15 @@ export function statement(invoice: any, plays: any): string {
 }
 
 console.log(statement(invoices[0], plays));
+function getComedyAmount(perf: any) {
+  let thisAmount = 30000;
+  if (perf.audience > 20) {
+    thisAmount += 10000 + 500 * (perf.audience - 20);
+  }
+  thisAmount += 300 * perf.audience;
+  return thisAmount;
+}
+
 function getTragedyAmount(perf: any) {
   let thisAmount = 40000;
   if (perf.audience > 30) {
