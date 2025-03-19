@@ -31,6 +31,7 @@ export const invoices = [
     ],
   },
 ];
+
 export function statement(invoice: any, plays: any): string {
   let totalAmount: number = 0;
   let volumeCredits: number = 0;
@@ -47,10 +48,7 @@ export function statement(invoice: any, plays: any): string {
 
     switch (play.type) {
       case "tragedy":
-        thisAmount = 40000;
-        if (perf.audience > 30) {
-          thisAmount += 1000 * (perf.audience - 30);
-        }
+        thisAmount = getTragedyAmount(perf);
         break;
       case "comedy":
         thisAmount = 30000;
@@ -80,3 +78,10 @@ export function statement(invoice: any, plays: any): string {
 }
 
 console.log(statement(invoices[0], plays));
+function getTragedyAmount(perf: any) {
+  let thisAmount = 40000;
+  if (perf.audience > 30) {
+    thisAmount += 1000 * (perf.audience - 30);
+  }
+  return thisAmount;
+}
