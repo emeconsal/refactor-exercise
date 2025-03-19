@@ -2,8 +2,13 @@
   "name": "refactor-exercise",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
   "devDependencies": {
     "@types/bun": "latest",
+    "@vitest/coverage-v8": "3.0.9",
     "vitest": "^3.0.9"
   },
   "peerDependencies": {

@@ -1,4 +1,4 @@
-const plays = {
+export const plays = {
   hamlet: {
     name: "Hamlet",
     type: "tragedy",
@@ -12,7 +12,7 @@ const plays = {
     type: "tragedy",
   },
 };
-const invoices = [
+export const invoices = [
   {
     customer: "BigCo",
     performances: [
@@ -31,7 +31,7 @@ const invoices = [
     ],
   },
 ];
-function statement(invoice: any, plays: any): string {
+export function statement(invoice: any, plays: any): string {
   let totalAmount: number = 0;
   let volumeCredits: number = 0;
   let result: string = `Statement for ${invoice.customer}\n`;
